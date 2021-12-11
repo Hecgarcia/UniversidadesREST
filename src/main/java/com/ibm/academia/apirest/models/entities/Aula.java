@@ -1,4 +1,4 @@
-package com.ibm.academia.apirest.entities;
+package com.ibm.academia.apirest.models.entities;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -18,6 +18,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
+
 
 import com.ibm.academia.apirest.enums.Pizarron;
 
@@ -32,7 +36,7 @@ import lombok.ToString;
 @ToString
 @Entity 
 @Table(name = "aulas", schema = "universidad" )
-
+//@Table(name = "aulas")
 
 public class Aula implements Serializable {
 	
@@ -40,13 +44,18 @@ public class Aula implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Integer id;
     
-    @Column(name = "numero_aula", nullable = false)
+    @Positive(message = "El valor minimo aceptado es 1")
+	@Column(name = "numero_aula", nullable = false)
 	private Integer numeroAula;
     
+    
+	@NotNull(message = "No puede ser nulo")
+	@NotEmpty(message = "no puede ser vacio")
     @Column(name = "medidas")
 	private String medidas;
     
-	@Column(name = "cantidad_pupitres")
+    @Positive(message = "El valor minimo aceptado es 1")
+    @Column(name = "cantidad_pupitres")
 	private Integer cantidadPupitres;
 	
 	@Column(name = "tipo_pizarron")

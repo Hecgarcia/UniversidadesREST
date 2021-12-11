@@ -4,18 +4,15 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ibm.academia.apirest.entities.Pabellon;
+import com.ibm.academia.apirest.models.entities.Pabellon;
  
 @Repository
 public interface PabellonRepository extends CrudRepository<Pabellon,Integer> {
 	
-	@Query(value = "select nombre,localidad from universidad.pabellones\r\n"
-			     + "where localidad like '%a%';" )
+	//@Query("select p from Pabellon p where p.(Direccion.localidad) = ?1")
+	//public Iterable<Pabellon> findPabellonesByLocalidad(String localidad);
 	
-	public Iterable<Pabellon> findPabellonByNombreIterable(String localidad);
-	
-	@Query (value = "select nombre,localidad from universidad.pabellones\r\n"
-			       + "where nombre like '%e%';")
-	
-    public  Iterable<Pabellon> findByNombre(String nombre);
+	@Query("select p from Pabellon p where p.nombre = ?1")
+	public Iterable<Pabellon> findPabellonByNombre(String nombre);
+
 }

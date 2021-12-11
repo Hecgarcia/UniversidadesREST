@@ -5,23 +5,18 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.ibm.academia.apirest.entities.Aula;
+import com.ibm.academia.apirest.models.entities.Aula;
 
 
 
 @Repository
 public interface AulaRepository extends CrudRepository<Aula, Integer> {
 	
-	@Query (value = "select id,tipo_pizarron \r\n"
-			+ "from universidad.aulas\r\n"
-			+ "where tipo_pizarron = 'PIZARRA_TIZA';", nativeQuery = true )
-	public Iterable<Aula> buscarAulaPorTipoPizarron();
+	//@Query("select a from Aula a where a.tipo_pizarron = ?1")
+	//public Iterable<Aula> buscarAulaPorTipoPizzarra(Pizarron pizarron);
 	
-    @Query(value = "select *\r\n"
-    		+ "from universidad.aulas as a\r\n"
-    		+ "inner join universidad.pabellones as p \r\n"
-    		+ "on a.id = p.id where p.nombre = 'Redes';", nativeQuery = true)
-    public Iterable<Aula> buscarAulaPorNombrePabellon ();
+	@Query(value = "select a.* from universidad.aulas a inner join universidad.pabellones ON pabellones.id = a.pabellon_id where pabellones.nombre =:nombre ", nativeQuery = true)
+	public Iterable<Aula> buscarAulasPorNombrePabellon(@Param("nombre") String nombre);
 	
 	
 	 @Query("select a from Aula a where a.numeroAula = ?1")

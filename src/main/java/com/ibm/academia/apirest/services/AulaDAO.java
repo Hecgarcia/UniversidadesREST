@@ -2,7 +2,7 @@ package com.ibm.academia.apirest.services;
 
 import java.util.Optional;
 
-import com.ibm.academia.apirest.entities.Aula;
+import com.ibm.academia.apirest.models.entities.Aula;
 
 public interface AulaDAO {
 	
@@ -18,7 +18,7 @@ public interface AulaDAO {
 	public Iterable<Aula> buscarTodos();
 	public void eliminarPorId(Integer id);
 
-	
+	public Aula actualizar(Aula aulaEncontrada, Aula aula);
 	
 
 }

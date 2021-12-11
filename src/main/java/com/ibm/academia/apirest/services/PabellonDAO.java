@@ -2,13 +2,13 @@ package com.ibm.academia.apirest.services;
 
 import java.util.Optional;
 
-import com.ibm.academia.apirest.entities.Pabellon;
+import com.ibm.academia.apirest.models.entities.Pabellon;
 
 public interface PabellonDAO {
 	
-	public Iterable<Pabellon> findPabellonByNombreIterable(String localidad);
+	//public Iterable<Pabellon> findPabellonByNombreIterable(String localidad);
 	
-	 public  Iterable<Pabellon> findByNombre(String nombre);
+	// public  Iterable<Pabellon> findByNombre(String nombre);
 	
 	public Optional<Pabellon>buscarPorId(Integer id);
 	public Pabellon guardar (Pabellon pabellon);

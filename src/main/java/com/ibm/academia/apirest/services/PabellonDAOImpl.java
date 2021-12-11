@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.ibm.academia.apirest.entities.Pabellon;
+import com.ibm.academia.apirest.models.entities.Pabellon;
 import com.ibm.academia.apirest.repositories.PabellonRepository;
 
 @Service
@@ -17,19 +17,19 @@ public class PabellonDAOImpl implements PabellonDAO {
 	@Autowired
 	private PabellonRepository pabellonRepository;
 	
-	@Override
+	/*@Override
 	@Transactional
 	public Iterable<Pabellon> findPabellonByNombreIterable(String localidad) {
 		
 		return pabellonRepository.findPabellonByNombreIterable(localidad);
-	}
+	}*/
 
-	@Override
+	/*@Override
 	@Transactional
 	public Iterable<Pabellon> findByNombre(String nombre) {
 		
 		return pabellonRepository.findByNombre(nombre);
-	}
+	}*/
 
 	@Override
 	@Transactional
